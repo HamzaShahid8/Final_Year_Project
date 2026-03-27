@@ -60,26 +60,32 @@ class MedicalRecordViewSet(viewsets.ModelViewSet):
         return MedicalRecord.objects.none()
     
     def create(self, request, *args, **kwargs):
+
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
+
         user = request.user
 
-        # Doctor can only create for own patients
+        # doctor apne patients k liye record bana sakta hai
         if user.role == 'doctor':
-            patient = serializer.validated_data.get('patient')
-            # Save record and set doctor automatically
-            instance = serializer.save(doctor=user.doctor)
-        
-        # Admin or receptionist can create for anyone
+
+            instance = serializer.save(
+                doctor=user.doctor
+            )
+
+        # admin or receptionist kisi k liye bhi bana sakta hai
         elif user.role in ['admin', 'receptionist']:
+
             instance = serializer.save()
-        
-        # Patients cannot create records
+
         else:
             raise PermissionDenied("Patient cannot create medical records")
 
-        # Return serialized instance with ID
-        return Response(MedicalRecordSerializer(instance).data, status=status.HTTP_201_CREATED)
+        # important: nested prescriptions show hon
+        return Response(
+            self.get_serializer(instance).data,
+            status=status.HTTP_201_CREATED
+        )
         
     
 class PrescriptionViewSet(viewsets.ModelViewSet):
