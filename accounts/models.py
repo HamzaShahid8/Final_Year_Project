@@ -7,9 +7,10 @@ class User(AbstractUser):
     ROLE_CHOICES = [
         ('admin', 'Admin'),
         ('doctor', 'Doctor'),
-        ('nurse', 'Nurse'),
         ('patient', 'Patient'),
         ('receptionist', 'Receptionist'),
+        ('pharmacist', 'Pharmacist'),
+        ('lab_technician', 'Lab_Technician'),
     ]
     role = models.CharField(max_length=70, choices=ROLE_CHOICES)
     phn_no = models.CharField(max_length=20, null=True, blank=True)

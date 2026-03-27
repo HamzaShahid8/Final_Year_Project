@@ -17,3 +17,11 @@ class IsNurse(BasePermission):
 class IsPatient(BasePermission):
     def has_permission(self, request, view):
         return request.user.role == "patient"
+    
+class IsPharmacist(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.role == 'pharmacist'
+    
+class IsLabTechnician(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.role == 'lab_technician'
