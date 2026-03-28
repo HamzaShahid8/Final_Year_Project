@@ -155,5 +155,4 @@ class PrescriptionViewSet(viewsets.ModelViewSet):
         else:
             raise PermissionDenied("Patient cannot create prescriptions")
 
-        # Return serialized instance with ID
         return Response(PrescriptionSerializer(instance).data, status=status.HTTP_201_CREATED)
