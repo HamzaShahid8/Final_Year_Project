@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'pharmacy',
     'laboratory',
     'billing',
+    'reports',
     'rest_framework_simplejwt.token_blacklist',
     'rest_framework.authtoken',
     'django_filters',
