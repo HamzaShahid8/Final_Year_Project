@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+:root {
+  --app-bg: #f1f5f9;
+  --app-fg: #0f172a;
+  --surface: #ffffff;
+  --surface-muted: #f8fafc;
+  --surface-strong: #0f172a;
+  --border: #cbd5e1;
+  --text-muted: #475569;
+  --primary: #0e7490;
+  --primary-hover: #155e75;
+  --on-primary: #ffffff;
+  --link: #0e7490;
+  --link-hover: #155e75;
+  --danger-bg: #fef2f2;
+  --danger-fg: #b91c1c;
+  --danger-border: #fecaca;
+  --success-bg: #ecfdf5;
+  --success-fg: #047857;
+  --success-border: #a7f3d0;
+  --overlay: rgba(2, 6, 23, 0.45);
+  --sidebar-bg: #020617;
+  --sidebar-fg: #f8fafc;
+  --sidebar-muted: #67e8f9;
+  --sidebar-hover: rgba(148, 163, 184, 0.16);
+  --sidebar-active-bg: rgba(6, 182, 212, 0.24);
+  --sidebar-active-fg: #cffafe;
+  --badge-pending-bg: #fef3c7;
+  --badge-pending-fg: #92400e;
+  --badge-confirmed-bg: #cffafe;
+  --badge-confirmed-fg: #155e75;
+  --badge-completed-bg: #d1fae5;
+  --badge-completed-fg: #065f46;
+  --badge-active-bg: #dbeafe;
+  --badge-active-fg: #1e40af;
+  --badge-closed-bg: #e2e8f0;
+  --badge-closed-fg: #334155;
+  --badge-paid-bg: #d1fae5;
+  --badge-paid-fg: #065f46;
+  --chart-grid: #cbd5e1;
+  --chart-axis: #475569;
+  --chart-bar: #0e7490;
+  --chart-pie: #0891b2;
+  --chart-tooltip-bg: #ffffff;
+  --chart-tooltip-border: #cbd5e1;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--app-bg);
+  color: var(--app-fg);
+  transition: background-color 200ms ease, color 200ms ease;
+}
+
+html.dark {
+  --app-bg: #020617;
+  --app-fg: #e2e8f0;
+  --surface: #0f172a;
+  --surface-muted: #1e293b;
+  --surface-strong: #020617;
+  --border: #334155;
+  --text-muted: #94a3b8;
+  --primary: #06b6d4;
+  --primary-hover: #0891b2;
+  --on-primary: #ffffff;
+  --link: #22d3ee;
+  --link-hover: #67e8f9;
+  --danger-bg: #3f0b0b;
+  --danger-fg: #fecaca;
+  --danger-border: #7f1d1d;
+  --success-bg: #052e1f;
+  --success-fg: #a7f3d0;
+  --success-border: #065f46;
+  --overlay: rgba(2, 6, 23, 0.7);
+  --sidebar-bg: #020617;
+  --sidebar-fg: #e2e8f0;
+  --sidebar-muted: #67e8f9;
+  --sidebar-hover: rgba(51, 65, 85, 0.65);
+  --sidebar-active-bg: rgba(34, 211, 238, 0.2);
+  --sidebar-active-fg: #ecfeff;
+  --badge-pending-bg: #422006;
+  --badge-pending-fg: #fcd34d;
+  --badge-confirmed-bg: #083344;
+  --badge-confirmed-fg: #67e8f9;
+  --badge-completed-bg: #022c22;
+  --badge-completed-fg: #6ee7b7;
+  --badge-active-bg: #172554;
+  --badge-active-fg: #93c5fd;
+  --badge-closed-bg: #334155;
+  --badge-closed-fg: #e2e8f0;
+  --badge-paid-bg: #022c22;
+  --badge-paid-fg: #6ee7b7;
+  --chart-grid: #334155;
+  --chart-axis: #cbd5e1;
+  --chart-bar: #22d3ee;
+  --chart-pie: #06b6d4;
+  --chart-tooltip-bg: #0f172a;
+  --chart-tooltip-border: #334155;
+}
+
+.ui-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--app-fg);
+}
+
+.ui-soft {
+  background: var(--surface-muted);
+  border: 1px solid var(--border);
+}
+
+.ui-input {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--app-fg);
+}
+
+.ui-input::placeholder {
+  color: var(--text-muted);
+}
+
+.ui-btn-primary {
+  background: var(--primary);
+  color: var(--on-primary);
+  border: 1px solid transparent;
+}
+
+.ui-btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.ui-btn-secondary {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--app-fg);
+}
+
+.ui-btn-secondary:hover {
+  background: var(--surface-muted);
+}
+
+.ui-text-muted {
+  color: var(--text-muted);
+}
+
+.ui-link {
+  color: var(--link);
+}
+
+.ui-link:hover {
+  color: var(--link-hover);
+}
+
+.ui-alert-danger {
+  background: var(--danger-bg);
+  color: var(--danger-fg);
+  border: 1px solid var(--danger-border);
+}
+
+.ui-alert-success {
+  background: var(--success-bg);
+  color: var(--success-fg);
+  border: 1px solid var(--success-border);
+}
+
+.ui-error-text {
+  color: var(--danger-fg);
+}
+
+.ui-overlay {
+  background: var(--overlay);
+}
+
+.ui-sidebar {
+  background: var(--sidebar-bg);
+  color: var(--sidebar-fg);
+}
+
+.ui-sidebar-muted {
+  color: var(--sidebar-muted);
+}
+
+.ui-sidebar-link {
+  color: var(--text-muted);
+}
+
+.ui-sidebar-link:hover {
+  background: var(--sidebar-hover);
+}
+
+.ui-sidebar-link-active {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-active-fg);
+}
+
+.ui-status-pending { background: var(--badge-pending-bg); color: var(--badge-pending-fg); }
+.ui-status-confirmed { background: var(--badge-confirmed-bg); color: var(--badge-confirmed-fg); }
+.ui-status-completed { background: var(--badge-completed-bg); color: var(--badge-completed-fg); }
+.ui-status-active { background: var(--badge-active-bg); color: var(--badge-active-fg); }
+.ui-status-closed { background: var(--badge-closed-bg); color: var(--badge-closed-fg); }
+.ui-status-paid { background: var(--badge-paid-bg); color: var(--badge-paid-fg); }
+
+.ui-gallery-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.ui-gallery-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--link);
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.16);
+}
+
+.ui-gallery-image {
+  transition: transform 220ms ease;
+}
+
+.ui-gallery-card:hover .ui-gallery-image {
+  transform: scale(1.03);
+}
+
+.ui-auth-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 1024px) {
+  .ui-auth-shell {
+    grid-template-columns: 1.1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.ui-auth-visual {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  min-height: 16rem;
+}
+
+.ui-auth-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 260ms ease;
+}
+
+.ui-auth-visual:hover img {
+  transform: scale(1.03);
+}
+
+.ui-auth-overlay {
+  position: absolute;
+  inset: 0;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(180deg, rgba(2, 6, 23, 0.12) 20%, rgba(2, 6, 23, 0.72) 100%);
+  color: #fff;
+}
+
+.ui-profile-visual {
+  overflow: hidden;
+}
+
+.ui-profile-visual img {
+  transition: transform 260ms ease;
+}
+
+.ui-profile-visual:hover img {
+  transform: scale(1.03);
+}
