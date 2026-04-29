@@ -18,3 +18,25 @@ export const authVisualConfig = {
     ),
   },
 }
+
+export const authFormConfig = {
+  login: {
+    heading: 'Sign In',
+    submitIdleLabel: 'Sign In',
+    submitLoadingLabel: 'Signing in...',
+    footerPrompt: 'New user?',
+    footerLinkLabel: 'Create account',
+    footerLinkTo: '/register',
+    usernameRequired: 'Username is required',
+    passwordRequired: 'Password is required',
+  },
+  register: {
+    heading: 'Create Account',
+    submitIdleLabel: 'Register',
+    submitLoadingLabel: 'Submitting...',
+    footerPrompt: 'Already registered?',
+    footerLinkLabel: 'Sign in',
+    footerLinkTo: '/login',
+    requiredFieldMessage: 'Required',
+  },
+}

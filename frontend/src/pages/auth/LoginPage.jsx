@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../../context/AuthContext'
 import { getErrorMessage } from '../../utils/httpError'
-import { authVisualConfig } from '../../config/authVisualConfig'
+import { authFormConfig, authVisualConfig } from '../../config/authVisualConfig'
 
 export const LoginPage = () => {
   const { login } = useAuth()
@@ -12,6 +12,7 @@ export const LoginPage = () => {
   const [apiError, setApiError] = useState('')
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm()
   const visual = authVisualConfig.login
+  const form = authFormConfig.login
 
   const onSubmit = async (values) => {
     setApiError('')
@@ -34,24 +35,23 @@ export const LoginPage = () => {
           </div>
         </div>
         <form onSubmit={handleSubmit(onSubmit)} className="ui-card w-full space-y-4 rounded-xl p-6 shadow">
-          <h1 className="text-2xl font-bold">Sign In</h1>
-          <p className="ui-text-muted text-sm">Access the Medicore Hospital dashboard.</p>
+          <h1 className="text-2xl font-bold">{form.heading}</h1>
           <div>
             <label className="mb-1 block text-sm font-medium">Username</label>
-            <input className="ui-input w-full rounded px-3 py-2" {...register('username', { required: 'Username is required' })} />
+            <input className="ui-input w-full rounded px-3 py-2" {...register('username', { required: form.usernameRequired })} />
             {errors.username && <p className="ui-error-text text-xs">{errors.username.message}</p>}
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium">Password</label>
-            <input type="password" className="ui-input w-full rounded px-3 py-2" {...register('password', { required: 'Password is required' })} />
+            <input type="password" className="ui-input w-full rounded px-3 py-2" {...register('password', { required: form.passwordRequired })} />
             {errors.password && <p className="ui-error-text text-xs">{errors.password.message}</p>}
           </div>
-          {apiError && <p className="ui-alert-danger rounded px-3 py-2 text-sm">{apiError}</p>}
+          {apiError && <p className="ui-alert-danger rounded px-3 py-2 text-xs">{apiError}</p>}
           <button disabled={isSubmitting} className="ui-btn-primary w-full rounded px-4 py-2 font-medium disabled:opacity-60">
-            {isSubmitting ? 'Signing in...' : 'Sign In'}
+            {isSubmitting ? form.submitLoadingLabel : form.submitIdleLabel}
           </button>
           <p className="ui-text-muted text-sm">
-            New user? <Link className="ui-link underline" to="/register">Create account</Link>
+            {form.footerPrompt} <Link className="ui-link underline" to={form.footerLinkTo}>{form.footerLinkLabel}</Link>
           </p>
         </form>
       </div>
