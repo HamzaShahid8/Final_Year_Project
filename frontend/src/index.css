@@ -278,6 +278,10 @@ html.dark {
   color: #fff;
 }
 
+.ui-auth-form {
+  min-height: clamp(32rem, 70vh, 40rem);
+}
+
 .ui-profile-visual {
   overflow: hidden;
 }

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../../context/AuthContext'
 import { getErrorMessage } from '../../utils/httpError'
-import { authFormConfig, authVisualConfig } from '../../config/authVisualConfig'
+import { authFormConfig, authLayoutConfig, authVisualConfig } from '../../config/authVisualConfig'
 
 const roles = ['admin', 'doctor', 'patient', 'receptionist', 'pharmacist', 'lab_technician']
 
@@ -27,7 +27,7 @@ export const RegisterPage = () => {
 
   return (
     <div className="grid min-h-screen place-items-center p-4 md:p-6">
-      <div className="ui-auth-shell w-full max-w-6xl">
+      <div className={authLayoutConfig.shellClassName}>
         <div className="ui-auth-visual">
           <img src={visual.imageUrl} alt={visual.title} loading="lazy" />
           <div className="ui-auth-overlay">
@@ -35,7 +35,7 @@ export const RegisterPage = () => {
             <p className="mt-1 text-sm text-slate-200">{visual.subtitle}</p>
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className="ui-card w-full space-y-4 rounded-xl p-6 shadow">
+        <form onSubmit={handleSubmit(onSubmit)} className={authLayoutConfig.formClassName}>
           <h1 className="text-2xl font-bold">{form.heading}</h1>
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <div>
