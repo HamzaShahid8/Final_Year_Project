@@ -5,11 +5,17 @@ const sharedAuthImageUrl = withFallback(
   'https://images.unsplash.com/photo-1584982751601-97dcc096659c?auto=format&fit=crop&w=1800&q=80',
 )
 
+/** Login panel only: hospital / healthcare facility imagery */
+const loginHospitalImageUrl = withFallback(
+  import.meta.env.VITE_AUTH_LOGIN_IMAGE,
+  'https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=1800&q=80',
+)
+
 export const authVisualConfig = {
   login: {
     title: 'Connected Care Starts Here',
     subtitle: 'Secure sign-in for doctors, nurses, pharmacists, and patient operations.',
-    imageUrl: sharedAuthImageUrl,
+    imageUrl: loginHospitalImageUrl,
   },
   register: {
     title: 'Build Your Care Team Access',
